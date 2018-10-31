@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7
+    hostname: mysql
+    restart: always
+    environment:
+      - reschedule=on-node-failure
+      # - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_DATABASE=
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./etc/mysql/:/docker-entrypoint-initdb.d
+  # mssql:
+  #   image: microsoft/mssql-server-linux:latest
+  #   hostname: mssql
+  #   environment:
+  #     - ACCEPT_EULA=Y 
+  #     - SA_PASSWORD=secret
+  #   ports:
+  #     - 1433:1433

@@ -1,0 +1,3 @@
+CREATE DATABASE IF NOT EXISTS `bookstore`;
+CREATE USER IF NOT EXISTS 'go' IDENTIFIED BY 'go';
+GRANT ALL ON `bookstore`.* TO 'go';
