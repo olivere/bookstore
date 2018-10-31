@@ -21,6 +21,7 @@ func NewServer(books book.Repository) *Server {
 
 func (s *Server) Router() http.Handler {
 	r := mux.NewRouter()
+	r.Handle("/api/books", books.NewFindAllHandler(s.books))
 	r.Handle("/api/books/{id}", books.NewGetHandler(s.books))
 	return r
 }
